@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restaurants – Tomato</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar scrolled" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🍅</span> Tomato</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="restaurants.html" class="active">Restaurants</a>
+      <a href="menu.html">Menu</a>
+      <a href="offers.html">Offers</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-cart" onclick="openCart()"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cartCount">0</span></button>
+      <button class="btn-login" onclick="openLoginModal()">Sign In</button>
+      <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1>🍽️ All Restaurants</h1>
+    <p>Discover amazing restaurants near you</p>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <div class="filter-bar-inner">
+    <div class="filter-search">
+      <i class="fas fa-search"></i>
+      <input type="text" id="restaurantSearch" placeholder="Search restaurants or cuisines..." oninput="onRestSearch()">
+    </div>
+    <div class="filter-btns">
+      <button class="filter-btn active" data-cat="all" onclick="setRestFilter('all')">All</button>
+      <button class="filter-btn" data-cat="pizza" onclick="setRestFilter('pizza')">🍕 Pizza</button>
+      <button class="filter-btn" data-cat="biryani" onclick="setRestFilter('biryani')">🍛 Biryani</button>
+      <button class="filter-btn" data-cat="burger" onclick="setRestFilter('burger')">🍔 Burgers</button>
+      <button class="filter-btn" data-cat="chinese" onclick="setRestFilter('chinese')">🥡 Chinese</button>
+      <button class="filter-btn" data-cat="sushi" onclick="setRestFilter('sushi')">🍣 Sushi</button>
+      <button class="filter-btn" data-cat="desserts" onclick="setRestFilter('desserts')">🍰 Desserts</button>
+      <button class="filter-btn" data-cat="indian" onclick="setRestFilter('indian')">🌶️ Indian</button>
+    </div>
+    <select class="sort-select" onchange="setRestSort(this.value)">
+      <option value="">Sort by</option>
+      <option value="rating">⭐ Rating</option>
+      <option value="time">⏱️ Delivery Time</option>
+    </select>
+  </div>
+</div>
+
+<section class="section" style="padding-top: 2.5rem;">
+  <div class="container">
+    <div id="resultsCount" style="color: var(--text2); font-size: 0.9rem; margin-bottom: 1.25rem;"></div>
+    <div class="restaurants-grid" id="restaurantsGrid"></div>
+  </div>
+</section>
+
+<!-- Cart, Modal, Toast (shared) -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header"><h3>Your Order</h3><button onclick="closeCart()"><i class="fas fa-times"></i></button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your cart is empty</p></div></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total"><span>Total:</span><span id="cartTotal">₹0</span></div>
+    <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
+  </div>
+</div>
+<div class="modal-overlay" id="loginOverlay" onclick="closeLoginModal()"></div>
+<div class="modal" id="loginModal">
+  <button class="modal-close" onclick="closeLoginModal()"><i class="fas fa-times"></i></button>
+  <div class="modal-logo">🍅 Tomato</div>
+  <h2>Welcome Back!</h2><p class="modal-sub">Sign in to continue ordering</p>
+  <div class="modal-tabs"><button class="tab active" onclick="switchTab('login')">Login</button><button class="tab" onclick="switchTab('signup')">Sign Up</button></div>
+  <div id="loginForm"><input type="email" placeholder="Email" class="modal-input" id="loginEmail"><input type="password" placeholder="Password" class="modal-input" id="loginPass"><button class="btn-modal-submit" onclick="doLogin()">Login</button></div>
+  <div id="signupForm" style="display:none"><input type="text" placeholder="Full Name" class="modal-input" id="signupName"><input type="email" placeholder="Email" class="modal-input" id="signupEmail"><input type="password" placeholder="Password" class="modal-input" id="signupPass"><button class="btn-modal-submit" onclick="doSignup()">Create Account</button></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="logo">🍅 Tomato</div><p>Delivering happiness to your doorstep.</p><div class="social-links"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook"></i></a></div></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="#">Careers</a><a href="#">Blog</a></div>
+      <div class="footer-col"><h4>For Foodies</h4><a href="restaurants.html">Restaurants</a><a href="offers.html">Offers</a><a href="menu.html">Menu</a></div>
+      <div class="footer-col"><h4>Support</h4><a href="#">Help Center</a><a href="#">Privacy Policy</a><a href="#">Contact Us</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 Tomato. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+let currentCat = 'all';
+let currentSort = '';
+
+function onRestSearch() {
+  const q = document.getElementById('restaurantSearch').value;
+  renderAndCount(currentCat, q, currentSort);
+}
+function setRestFilter(cat) {
+  currentCat = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  renderAndCount(cat, document.getElementById('restaurantSearch').value, currentSort);
+}
+function setRestSort(sort) {
+  currentSort = sort;
+  renderAndCount(currentCat, document.getElementById('restaurantSearch').value, sort);
+}
+function renderAndCount(cat, q, sort) {
+  filterAndRenderRestaurants(cat, q, sort);
+  const count = document.querySelectorAll('.restaurant-card').length;
+  document.getElementById('resultsCount').textContent = `Showing ${count} restaurant${count !== 1 ? 's' : ''}`;
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get('cat') || 'all';
+  const q = params.get('q') || '';
+  currentCat = cat;
+  if (q) document.getElementById('restaurantSearch').value = q;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+  renderAndCount(cat, q, '');
+  updateCartUI();
+  initNavScroll();
+  initHamburger();
+  updateUserUI();
+});
+</script>
+</body>
+</html>

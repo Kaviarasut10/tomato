@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offers – Tomato</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar scrolled" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🍅</span> Tomato</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="menu.html">Menu</a>
+      <a href="offers.html" class="active">Offers</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-cart" onclick="openCart()"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cartCount">0</span></button>
+      <button class="btn-login" onclick="openLoginModal()">Sign In</button>
+      <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <h1>🏷️ Offers & Deals</h1>
+    <p>Save big on your favourite meals</p>
+  </div>
+</div>
+
+<!-- Hero Offer Banner -->
+<section style="background: linear-gradient(135deg,#e23744 0%,#b02836 100%); padding: 3rem 2rem;">
+  <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:2rem; flex-wrap:wrap;">
+    <div>
+      <span style="background:rgba(255,255,255,0.2);color:white;padding:0.3rem 0.8rem;border-radius:50px;font-size:0.8rem;font-weight:700;display:inline-block;margin-bottom:0.75rem;">🔥 MEGA SALE</span>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:white;margin-bottom:0.5rem;">Use code <span style="text-decoration:underline;">TOMATO40</span></h2>
+      <p style="color:rgba(255,255,255,0.9);font-size:1rem;margin-bottom:1.5rem;">Get 40% OFF on your first order. No minimum order!</p>
+      <button onclick="copyCode('TOMATO40')" style="background:white;color:#e23744;padding:0.75rem 2rem;border-radius:10px;font-weight:700;font-size:1rem;border:none;cursor:pointer;transition:all 0.2s;">Copy Code 📋</button>
+    </div>
+    <div style="font-size:6rem;">🎉</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:2.5rem;">
+      <h2>All Offers</h2>
+      <p style="color:var(--text2);">Tap to copy the code and apply at checkout</p>
+    </div>
+    <div class="offers-grid" id="offersGrid"></div>
+  </div>
+</section>
+
+<!-- Promo Banner -->
+<section style="background:var(--bg2);padding:3rem 2rem;border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="section-header centered">
+      <h2>How to Redeem</h2>
+      <p>Using your offer code is simple</p>
+    </div>
+    <div class="steps-grid" style="margin-top:2.5rem;">
+      <div class="step-card"><div class="step-icon">🛒</div><h3>Add to Cart</h3><p>Browse and add your favourite items to the cart.</p></div>
+      <div class="step-arrow">→</div>
+      <div class="step-card"><div class="step-icon">🏷️</div><h3>Apply Code</h3><p>Enter your promo code in the checkout coupon field.</p></div>
+      <div class="step-arrow">→</div>
+      <div class="step-card"><div class="step-icon">💰</div><h3>Save Money!</h3><p>Your discount is applied automatically at checkout.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Shared UI -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header"><h3>Your Order</h3><button onclick="closeCart()"><i class="fas fa-times"></i></button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your cart is empty</p></div></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total"><span>Total:</span><span id="cartTotal">₹0</span></div>
+    <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
+  </div>
+</div>
+<div class="modal-overlay" id="loginOverlay" onclick="closeLoginModal()"></div>
+<div class="modal" id="loginModal">
+  <button class="modal-close" onclick="closeLoginModal()"><i class="fas fa-times"></i></button>
+  <div class="modal-logo">🍅 Tomato</div>
+  <h2>Welcome Back!</h2><p class="modal-sub">Sign in to continue ordering</p>
+  <div class="modal-tabs"><button class="tab active" onclick="switchTab('login')">Login</button><button class="tab" onclick="switchTab('signup')">Sign Up</button></div>
+  <div id="loginForm"><input type="email" placeholder="Email" class="modal-input" id="loginEmail"><input type="password" placeholder="Password" class="modal-input" id="loginPass"><button class="btn-modal-submit" onclick="doLogin()">Login</button></div>
+  <div id="signupForm" style="display:none"><input type="text" placeholder="Full Name" class="modal-input" id="signupName"><input type="email" placeholder="Email" class="modal-input" id="signupEmail"><input type="password" placeholder="Password" class="modal-input" id="signupPass"><button class="btn-modal-submit" onclick="doSignup()">Create Account</button></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="logo">🍅 Tomato</div><p>Delivering happiness to your doorstep.</p><div class="social-links"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook"></i></a></div></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="#">Careers</a><a href="#">Blog</a></div>
+      <div class="footer-col"><h4>For Foodies</h4><a href="restaurants.html">Restaurants</a><a href="offers.html">Offers</a><a href="menu.html">Menu</a></div>
+      <div class="footer-col"><h4>Support</h4><a href="#">Help Center</a><a href="#">Contact Us</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 Tomato. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  renderOffersPage();
+  updateCartUI();
+  initNavScroll();
+  initHamburger();
+  updateUserUI();
+});
+</script>
+</body>
+</html>

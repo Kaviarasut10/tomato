@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tomato – Food Delivery & Dining</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🍅</span> Tomato</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html" class="active">Home</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="menu.html">Menu</a>
+      <a href="offers.html">Offers</a>
+      <a href="about.html">About</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-cart" onclick="openCart()"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cartCount">0</span></button>
+      <button class="btn-login" onclick="openLoginModal()">Sign In</button>
+      <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">🍅 Delivering Joy Since 2024</p>
+    <h1 class="hero-title">Discover the<br><span class="highlight">Best Food</span><br>Near You</h1>
+    <p class="hero-sub">Fresh meals from top restaurants, delivered to your door in 30 minutes or less.</p>
+    <div class="hero-search">
+      <div class="search-box">
+        <i class="fas fa-map-marker-alt"></i>
+        <input type="text" id="locationInput" placeholder="Enter your delivery address..." />
+        <button class="search-btn" onclick="searchRestaurants()">Find Food</button>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>2,000+</strong><span>Restaurants</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><strong>50K+</strong><span>Happy Customers</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><strong>30 Min</strong><span>Avg Delivery</span></div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&q=80" alt="Delicious Pizza" class="hero-food-img float-anim">
+    <div class="hero-badge badge1">⭐ 4.9 Rated</div>
+    <div class="hero-badge badge2">🚀 30 Min Delivery</div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section categories-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>What are you craving?</h2>
+      <p>Explore cuisines from around the world</p>
+    </div>
+    <div class="categories-grid">
+      <a href="restaurants.html?cat=pizza" class="category-card">
+        <div class="cat-img"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=200&q=80" alt="Pizza"></div>
+        <span>Pizza</span>
+      </a>
+      <a href="restaurants.html?cat=biryani" class="category-card">
+        <div class="cat-img"><img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=200&q=80" alt="Biryani"></div>
+        <span>Biryani</span>
+      </a>
+      <a href="restaurants.html?cat=burger" class="category-card">
+        <div class="cat-img"><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=200&q=80" alt="Burger"></div>
+        <span>Burgers</span>
+      </a>
+      <a href="restaurants.html?cat=chinese" class="category-card">
+        <div class="cat-img"><img src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?w=200&q=80" alt="Chinese"></div>
+        <span>Chinese</span>
+      </a>
+      <a href="restaurants.html?cat=sushi" class="category-card">
+        <div class="cat-img"><img src="https://images.unsplash.com/photo-1553621042-f6e147245754?w=200&q=80" alt="Sushi"></div>
+        <span>Sushi</span>
+      </a>
+      <a href="restaurants.html?cat=desserts" class="category-card">
+        <div class="cat-img"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=200&q=80" alt="Desserts"></div>
+        <span>Desserts</span>
+      </a>
+      <a href="restaurants.html?cat=coffee" class="category-card">
+        <div class="cat-img"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=200&q=80" alt="Coffee"></div>
+        <span>Coffee</span>
+      </a>
+      <a href="restaurants.html?cat=salads" class="category-card">
+        <div class="cat-img"><img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=200&q=80" alt="Salads"></div>
+        <span>Salads</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED RESTAURANTS -->
+<section class="section featured-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Top Rated Restaurants</h2>
+      <a href="restaurants.html" class="see-all">See All <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="restaurants-grid" id="featuredRestaurants"></div>
+  </div>
+</section>
+
+<!-- OFFER BANNER -->
+<section class="offer-banner">
+  <div class="container">
+    <div class="offer-inner">
+      <div class="offer-text">
+        <span class="offer-tag">Limited Time</span>
+        <h2>Get 40% OFF on your first order!</h2>
+        <p>Use code <strong>TOMATO40</strong> at checkout. Valid for new users only.</p>
+        <a href="offers.html" class="btn-offer">Claim Offer</a>
+      </div>
+      <div class="offer-img">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80" alt="Offer Food">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section how-section">
+  <div class="container">
+    <div class="section-header centered">
+      <h2>How Tomato Works</h2>
+      <p>Order food in 3 easy steps</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon">📍</div>
+        <h3>Choose Location</h3>
+        <p>Enter your delivery address and find restaurants near you.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step-card">
+        <div class="step-icon">🍽️</div>
+        <h3>Pick Your Meal</h3>
+        <p>Browse menus, read reviews, and add items to your cart.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step-card">
+        <div class="step-icon">🚀</div>
+        <h3>Fast Delivery</h3>
+        <p>Your food is picked up and delivered hot to your door.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POPULAR DISHES -->
+<section class="section dishes-section">
+  <div class="container">
+    <div class="section-header">
+      <h2>Popular Dishes Today</h2>
+      <a href="menu.html" class="see-all">Full Menu <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="dishes-grid" id="popularDishes"></div>
+  </div>
+</section>
+
+<!-- APP DOWNLOAD -->
+<section class="app-section">
+  <div class="container">
+    <div class="app-inner">
+      <div class="app-text">
+        <h2>Download the Tomato App</h2>
+        <p>Get exclusive app-only deals. Track your order live. Reorder your favorites in one tap.</p>
+        <div class="app-btns">
+          <button class="app-btn"><i class="fab fa-apple"></i> App Store</button>
+          <button class="app-btn"><i class="fab fa-google-play"></i> Google Play</button>
+        </div>
+      </div>
+      <div class="app-image">
+        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=300&q=80" alt="App">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">🍅 Tomato</div>
+        <p>Delivering happiness to your doorstep. Fresh, fast, and always delicious.</p>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="about.html">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="footer-col">
+        <h4>For Foodies</h4>
+        <a href="restaurants.html">Restaurants</a>
+        <a href="offers.html">Offers</a>
+        <a href="menu.html">Menu</a>
+        <a href="#">Gift Cards</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#">Help Center</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Contact Us</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Tomato. All rights reserved. Made with ❤️ for food lovers.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header">
+    <h3>Your Order</h3>
+    <button onclick="closeCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your cart is empty</p></div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total"><span>Total:</span><span id="cartTotal">₹0</span></div>
+    <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal-overlay" id="loginOverlay" onclick="closeLoginModal()"></div>
+<div class="modal" id="loginModal">
+  <button class="modal-close" onclick="closeLoginModal()"><i class="fas fa-times"></i></button>
+  <div class="modal-logo">🍅 Tomato</div>
+  <h2>Welcome Back!</h2>
+  <p class="modal-sub">Sign in to continue ordering</p>
+  <div class="modal-tabs">
+    <button class="tab active" onclick="switchTab('login')">Login</button>
+    <button class="tab" onclick="switchTab('signup')">Sign Up</button>
+  </div>
+  <div id="loginForm">
+    <input type="email" placeholder="Email address" class="modal-input" id="loginEmail">
+    <input type="password" placeholder="Password" class="modal-input" id="loginPass">
+    <button class="btn-modal-submit" onclick="doLogin()">Login</button>
+    <p class="modal-link">Forgot password? <a href="#">Reset</a></p>
+  </div>
+  <div id="signupForm" style="display:none">
+    <input type="text" placeholder="Full Name" class="modal-input" id="signupName">
+    <input type="email" placeholder="Email address" class="modal-input" id="signupEmail">
+    <input type="password" placeholder="Password" class="modal-input" id="signupPass">
+    <button class="btn-modal-submit" onclick="doSignup()">Create Account</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About – Tomato</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar scrolled" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><span class="logo-icon">🍅</span> Tomato</a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="menu.html">Menu</a>
+      <a href="offers.html">Offers</a>
+      <a href="about.html" class="active">About</a>
+    </div>
+    <div class="nav-actions">
+      <button class="btn-cart" onclick="openCart()"><i class="fas fa-shopping-bag"></i><span class="cart-count" id="cartCount">0</span></button>
+      <button class="btn-login" onclick="openLoginModal()">Sign In</button>
+      <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    </div>
+  </div>
+</nav>
+
+<!-- About Hero -->
+<section class="about-hero">
+  <p style="color:var(--primary);font-weight:600;font-size:0.9rem;letter-spacing:0.05em;margin-bottom:1rem;">🍅 Our Story</p>
+  <h1>We Deliver More<br>Than Just <span style="color:var(--primary);">Food</span></h1>
+  <p>Tomato was born from a simple idea: everyone deserves access to amazing food, delivered fast and fresh. We connect hungry people with the best restaurants in their city.</p>
+  <div class="about-stats">
+    <div class="about-stat"><strong>2,000+</strong><span>Restaurant Partners</span></div>
+    <div class="about-stat"><strong>50K+</strong><span>Happy Customers</span></div>
+    <div class="about-stat"><strong>100+</strong><span>Cities</span></div>
+    <div class="about-stat"><strong>30 Min</strong><span>Avg. Delivery</span></div>
+  </div>
+</section>
+
+<!-- Mission -->
+<section class="section">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="mission-grid">
+      <div>
+        <p style="color:var(--primary);font-weight:600;margin-bottom:0.75rem;">Our Mission</p>
+        <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:900;margin-bottom:1.5rem;">Food that brings<br>people together</h2>
+        <p style="color:var(--text2);line-height:1.8;margin-bottom:1rem;">We believe that a great meal can make any day better. That's why we work tirelessly with our restaurant partners to bring you the freshest, most delicious food — delivered right to your door.</p>
+        <p style="color:var(--text2);line-height:1.8;">From quick weekday lunches to special family dinners, Tomato is your go-to platform for every craving. We're more than a delivery app — we're your food companion.</p>
+      </div>
+      <div style="border-radius:24px;overflow:hidden;height:400px;">
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Food Mission" style="width:100%;height:100%;object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="section" style="background:var(--bg2);">
+  <div class="container">
+    <div class="section-header centered">
+      <h2>Our Values</h2>
+      <p>What drives us every day</p>
+    </div>
+    <div class="values-grid" style="margin-top:2.5rem;">
+      <div class="value-card">
+        <div class="value-icon">🚀</div>
+        <h3>Speed & Reliability</h3>
+        <p>We promise fast delivery without compromising food quality. Every order, every time.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🌱</div>
+        <h3>Sustainability</h3>
+        <p>We use eco-friendly packaging and work with green-certified restaurant partners.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🤝</div>
+        <h3>Community First</h3>
+        <p>We support local restaurants and help them grow their business through our platform.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">⭐</div>
+        <h3>Quality Obsessed</h3>
+        <p>Every restaurant is vetted for food safety, hygiene, and taste standards.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">🔒</div>
+        <h3>Trust & Safety</h3>
+        <p>Secure payments, verified restaurants, and real-time order tracking for peace of mind.</p>
+      </div>
+      <div class="value-card">
+        <div class="value-icon">💡</div>
+        <h3>Innovation</h3>
+        <p>We constantly improve our platform to make food ordering smarter and more enjoyable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Team -->
+<section class="section">
+  <div class="container">
+    <div class="section-header centered">
+      <h2>Meet Our Team</h2>
+      <p>The people behind every great meal</p>
+    </div>
+    <div class="team-grid" style="margin-top:2.5rem;">
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80" alt="CEO">
+        <h3>Arjun Sharma</h3>
+        <p>Co-founder & CEO</p>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b5b4?w=300&q=80" alt="COO">
+        <h3>Priya Mehta</h3>
+        <p>Co-founder & COO</p>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80" alt="CTO">
+        <h3>Rohan Gupta</h3>
+        <p>Chief Technology Officer</p>
+      </div>
+      <div class="team-card">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&q=80" alt="CMO">
+        <h3>Sneha Patel</h3>
+        <p>Chief Marketing Officer</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:5rem 2rem;text-align:center;">
+  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:900;color:white;margin-bottom:1rem;">Ready to order?</h2>
+  <p style="color:rgba(255,255,255,0.9);font-size:1.1rem;margin-bottom:2rem;">Join 50,000+ happy customers who order with Tomato every day.</p>
+  <a href="restaurants.html" style="background:white;color:var(--primary);padding:0.9rem 2.5rem;border-radius:12px;font-weight:700;font-size:1rem;display:inline-block;transition:all 0.2s;">Browse Restaurants 🍽️</a>
+</section>
+
+<!-- Shared UI -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-header"><h3>Your Order</h3><button onclick="closeCart()"><i class="fas fa-times"></i></button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your cart is empty</p></div></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-total"><span>Total:</span><span id="cartTotal">₹0</span></div>
+    <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
+  </div>
+</div>
+<div class="modal-overlay" id="loginOverlay" onclick="closeLoginModal()"></div>
+<div class="modal" id="loginModal">
+  <button class="modal-close" onclick="closeLoginModal()"><i class="fas fa-times"></i></button>
+  <div class="modal-logo">🍅 Tomato</div>
+  <h2>Welcome Back!</h2><p class="modal-sub">Sign in to continue ordering</p>
+  <div class="modal-tabs"><button class="tab active" onclick="switchTab('login')">Login</button><button class="tab" onclick="switchTab('signup')">Sign Up</button></div>
+  <div id="loginForm"><input type="email" placeholder="Email" class="modal-input" id="loginEmail"><input type="password" placeholder="Password" class="modal-input" id="loginPass"><button class="btn-modal-submit" onclick="doLogin()">Login</button></div>
+  <div id="signupForm" style="display:none"><input type="text" placeholder="Full Name" class="modal-input" id="signupName"><input type="email" placeholder="Email" class="modal-input" id="signupEmail"><input type="password" placeholder="Password" class="modal-input" id="signupPass"><button class="btn-modal-submit" onclick="doSignup()">Create Account</button></div>
+</div>
+<div class="toast" id="toast"></div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><div class="logo">🍅 Tomato</div><p>Delivering happiness to your doorstep.</p><div class="social-links"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-facebook"></i></a></div></div>
+      <div class="footer-col"><h4>Company</h4><a href="about.html">About Us</a><a href="#">Careers</a><a href="#">Blog</a></div>
+      <div class="footer-col"><h4>For Foodies</h4><a href="restaurants.html">Restaurants</a><a href="offers.html">Offers</a><a href="menu.html">Menu</a></div>
+      <div class="footer-col"><h4>Support</h4><a href="#">Help Center</a><a href="#">Contact Us</a></div>
+    </div>
+    <div class="footer-bottom"><p>© 2024 Tomato. All rights reserved.</p></div>
+  </div>
+</footer>
+
+<style>
+@media (max-width: 768px) {
+  .mission-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+<script src="data.js"></script>
+<script src="app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  updateCartUI();
+  initNavScroll();
+  initHamburger();
+  updateUserUI();
+});
+</script>
+</body>
+</html>
